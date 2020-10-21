@@ -138,14 +138,6 @@ Requires:       clr-systemd-config-data
 %description -n libc6
 GNU C library.
 
-
-%package lib-avx2
-License:        GPL-2.0
-Summary:        GNU C library
-
-%description lib-avx2
-GNU C library.
-
 %package dev
 License:        GPL-2.0
 Summary:        GNU C library
@@ -238,10 +230,33 @@ export LANG=C
 mkdir ../glibc-buildroot
 pushd ../glibc-buildroot
 
-export CFLAGS="-O3 -march=westmere -mtune=skylake -g2 -m64  -Wl,-z,max-page-size=0x1000 -fPIC -falign-functions=32 -Wa,-mbranches-within-32B-boundaries"
-export ASFLAGS="-Wa,-mbranches-within-32B-boundaries"
-unset LDFLAGS
-export LDFLAGS="-Wl,-z,max-page-size=0x1000 "
+export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+# -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none
+# gcc: -feliminate-unused-debug-types -fipa-pta -flto=16 -Wno-error -Wp,-D_REENTRANT -fno-common
+export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+#
+export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+#
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+#
+export ASFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+#
+export AR=gcc-ar
+export RANLIB=gcc-ranlib
+export NM=gcc-nm
+#
+export MAKEFLAGS=%{?_smp_mflags}
+#
+%global _lto_cflags 1
+#global _lto_cflags %{nil}
+#
+# export PATH="/usr/lib64/ccache/bin:$PATH"
+# export CCACHE_NOHASHDIR=1
+# export CCACHE_DIRECT=1
+# export CCACHE_SLOPPINESS=pch_defines,locale,time_macros
+export CCACHE_DISABLE=1
 
 ../glibc-2.31/configure \
     --prefix=/usr \
@@ -274,10 +289,13 @@ export LDFLAGS="-Wl,-z,max-page-size=0x1000 "
     --enable-lock-elision=yes \
     --enable-bind-now  \
     --enable-tunables \
-    --enable-stack-protector=strong \
+    --disable-stack-protector \
     --enable-obsolete-nsl \
-    --enable-cet \
-    --enable-static-pie \
+    --disable-cet \
+    --disable-werror \
+    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-semantic-interposition -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -flto=16 -fno-plt -mtls-dialect=gnu2 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -ffat-lto-objects -fPIC" \
+    --enable-shared \
+    --enable-static \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
 
@@ -285,111 +303,18 @@ make %{?_smp_mflags}
 make USE_CLOCK_GETTIME=1 bench-build %{?_smp_mflags}
 popd
 
-
-mkdir ../glibc-buildroot-avx2
-pushd ../glibc-buildroot-avx2
-
-export CFLAGS="-O3 -march=haswell -mtune=skylake -g2 -m64  -Wl,-z,max-page-size=0x1000 -fPIC -Wa,-mbranches-within-32B-boundaries"
-export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -Wa,-mbranches-within-32B-boundaries"
-unset LDFLAGS
-export LDFLAGS="-Wl,-z,max-page-size=0x1000 "
-
-../glibc-2.31/configure \
-    --prefix=/usr \
-    --exec_prefix=/usr \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib64/glibc \
-    --datadir=/usr/share \
-    --sysconfdir=%{_sysconfdir} \
-    --sharedstatedir=%{_localstatedir}/lib \
-    --localstatedir=%{_localstatedir} \
-    --libdir=/usr/lib64 \
-    --localedir=/usr/share/locale \
-    --infodir=/usr/share/info \
-    --mandir=/usr/share/man \
-    --disable-silent-rules \
-    --disable-dependency-tracking \
-    --enable-kernel=3.10 \
-    --without-cvs \
-    --disable-profile \
-    --disable-debug \
-    --without-gd  \
-    --enable-clocale=gnu \
-    --enable-add-ons \
-    --without-selinux \
-    --enable-obsolete-rpc \
-    --build=%{glibc_target} \
-    --host=%{glibc_target} \
-    --with-pkgversion='Clear Linux Software for Intel Architecture' \
-    --enable-lock-elision=yes \
-    --enable-bind-now  \
-    --enable-tunables \
-    --enable-stack-protector=strong \
-    --enable-obsolete-nsl \
-    --enable-cet \
-    --enable-static-pie \
-    libc_cv_slibdir=/usr/lib64 \
-    libc_cv_complocaledir=/usr/share/locale
-
-make %{?_smp_mflags}
-popd
-
-mkdir ../glibc-buildroot-avx512
-pushd ../glibc-buildroot-avx512
-
-export CFLAGS="-O3 -march=skylake-avx512 -mtune=skylake -g2 -m64  -Wl,-z,max-page-size=0x1000 -fPIC "
-export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
-unset LDFLAGS
-export LDFLAGS="-Wl,-z,max-page-size=0x1000 "
-
-../glibc-2.31/configure \
-    --prefix=/usr \
-    --exec_prefix=/usr \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib64/glibc \
-    --datadir=/usr/share \
-    --sysconfdir=%{_sysconfdir} \
-    --sharedstatedir=%{_localstatedir}/lib \
-    --localstatedir=%{_localstatedir} \
-    --libdir=/usr/lib64 \
-    --localedir=/usr/share/locale \
-    --infodir=/usr/share/info \
-    --mandir=/usr/share/man \
-    --disable-silent-rules \
-    --disable-dependency-tracking \
-    --enable-kernel=3.10 \
-    --without-cvs \
-    --disable-profile \
-    --disable-debug \
-    --without-gd  \
-    --enable-clocale=gnu \
-    --enable-add-ons \
-    --without-selinux \
-    --enable-obsolete-rpc \
-    --build=%{glibc_target} \
-    --host=%{glibc_target} \
-    --with-pkgversion='Clear Linux Software for Intel Architecture' \
-    --enable-lock-elision=yes \
-    --enable-bind-now  \
-    --enable-tunables \
-    --enable-stack-protector=strong \
-    --enable-obsolete-nsl \
-    --enable-cet \
-    --enable-static-pie \
-    libc_cv_slibdir=/usr/lib64 \
-    libc_cv_complocaledir=/usr/share/locale
-
-make %{?_smp_mflags}
-popd
-
 mkdir ../glibc-buildroot32
 pushd ../glibc-buildroot32
 
+unset CFLAGS
+unset CXXFLAGS
+unset FCFLAGS
+unset FFLAGS
+UNSET CFFLAGS
 unset ASFLAGS
-export CFLAGS="-O3 -m32 -march=westmere -mtune=skylake -mstackrealign -g2  -Wl,-z,max-page-size=0x1000"
 unset LDFLAGS
+export CFLAGS="-O3 -m32 -march=native -mtune=native -mstackrealign -g2  -Wl,-z,max-page-size=0x1000"
+
 export LDFLAGS="-Wl,-z,max-page-size=0x1000"
 
 ../glibc-2.31/configure \
@@ -448,28 +373,6 @@ pushd ../glibc-buildroot32
 
 make install DESTDIR=%{buildroot} install_root=%{buildroot}  %{?_smp_mflags}
 popd
-
-pushd ../glibc-buildroot-avx2
-mkdir -p %{buildroot}/usr/lib64/haswell
-cp math/libm.so %{buildroot}/usr/lib64/haswell/libm-2.31.so
-cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec-2.31.so
-cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt-2.31.so
-cp libc.so  %{buildroot}/usr/lib64/haswell/libc-2.31.so
-ln -s libm-2.31.so %{buildroot}/usr/lib64/haswell/libm.so.6
-ln -s libmvec-2.31.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
-ln -s libcrypt-2.31.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
-ln -s libc-2.31.so  %{buildroot}/usr/lib64/haswell/libc.so.6
-popd
-
-pushd ../glibc-buildroot-avx512
-mkdir -p %{buildroot}/usr/lib64/haswell/avx512_1
-cp math/libm.so %{buildroot}/usr/lib64/haswell/avx512_1/libm-2.31.so
-cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/avx512_1/libmvec-2.31.so
-ln -s libm-2.31.so %{buildroot}/usr/lib64/haswell/avx512_1/libm.so.6
-ln -s libmvec-2.31.so %{buildroot}/usr/lib64/haswell/avx512_1/libmvec.so.1
-popd
-
-
 
 pushd ../glibc-buildroot
 
@@ -733,16 +636,8 @@ popd
 /usr/lib64/libmvec.so.1
 %{_datadir}/defaults/etc/rpc
 
-/usr/lib64/haswell/libm-2.31.so
-/usr/lib64/haswell/libm.so.6
-
 /usr/bin/ldconfig
 %exclude /var/cache/ldconfig
-
-%files lib-avx2
-/usr/lib64/haswell/libmvec*
-/usr/lib64/haswell/libc*
-/usr/lib64/haswell/avx512_1/*
 
 # TODO: SPLIT!
 %files locale
