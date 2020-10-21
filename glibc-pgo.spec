@@ -232,18 +232,28 @@ export LANG=C
 mkdir ../glibc-buildroot
 pushd ../glibc-buildroot
 
-export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
-# -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none
-# gcc: -feliminate-unused-debug-types -fipa-pta -Wno-error -Wp,-D_REENTRANT -fno-common -Wl,-z,now -Wl,-z,relro  -flto=16
-export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+## pgo generate
+export PGO_GEN="-fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage -lgcov --coverage -fprofile-partial-training"
+export CFLAGS_GENERATE="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_GEN -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export FCFLAGS_GENERATE="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_GEN -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export FFLAGS_GENERATE="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_GEN -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export CXXFLAGS_GENERATE="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -fvisibility-inlines-hidden -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_GEN -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export LDFLAGS_GENERATE="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_GEN -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 #
-export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
-export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
-export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export ASFLAGS_GENERATE="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_GEN -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 #
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+## pgo use
+## -ffat-lto-objects -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none -Wl,--allow-multiple-definition     libc_cv_ctors_header=yes -Wl,-Bdynamic -lpthread -ldl -lrt -lc  -lgcc -lgcc_s -lstdc++ -lmvec -lm -lgcov -pthread 
+## gcc: -feliminate-unused-debug-types -fipa-pta -Wno-error -Wp,-D_REENTRANT -fno-common
+export PGO_USE="-fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training"
+export CFLAGS_USE="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_USE -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export FCFLAGS_USE="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_USE -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export FFLAGS_USE="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_USE -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export CXXFLAGS_USE="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -fvisibility-inlines-hidden -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_USE -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export LDFLAGS_USE="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_USE -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 #
-export ASFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export ASFLAGS_USE="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC $PGO_USE -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+#
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -259,6 +269,13 @@ export MAKEFLAGS=%{?_smp_mflags}
 # export CCACHE_DIRECT=1
 # export CCACHE_SLOPPINESS=pch_defines,locale,time_macros
 export CCACHE_DISABLE=1
+
+export CFLAGS="${CFLAGS_GENERATE}"
+export CXXFLAGS="${CXXFLAGS_GENERATE}"
+export FFLAGS="${FFLAGS_GENERATE}"
+export FCFLAGS="${FCFLAGS_GENERATE}"
+export LDFLAGS="${LDFLAGS_GENERATE}"
+export ASFLAGS="${ASFLAGS_GENERATE}"
 
 ../glibc-2.31/configure \
     --prefix=/usr \
@@ -295,13 +312,66 @@ export CCACHE_DISABLE=1
     --enable-obsolete-nsl \
     --disable-cet \
     --disable-werror \
-    --disable-profile \
-    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -flto=16 -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -Wl,-z,now -Wl,-z,relro -pipe -ffat-lto-objects -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1" \
+    --enable-profile \
+    --with-nonshared-cflags="-O3 -march=native -mtune=native -falign-functions=32 -flimit-function-alignment -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -fno-math-errno -fno-trapping-math -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC -fprofile-generate=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-update=atomic -fprofile-arcs -ftest-coverage -lgcov --coverage -fprofile-partial-training -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
 
 make %{?_smp_mflags} V=1 VERBOSE=1
 make USE_CLOCK_GETTIME=1 V=1 VERBOSE=1 bench %{?_smp_mflags} || :
+make check -j1 V=1 VERBOSE=1 || :
+make bench-clean || :
+make clean || :
+make distclean || :
+
+export CFLAGS="${CFLAGS_USE}"
+export CXXFLAGS="${CXXFLAGS_USE}"
+export FFLAGS="${FFLAGS_USE}"
+export FCFLAGS="${FCFLAGS_USE}"
+export LDFLAGS="${LDFLAGS_USE}"
+export ASFLAGS="${ASFLAGS_USE}"
+
+../glibc-2.31/configure \
+    --prefix=/usr \
+    --exec_prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib64/glibc \
+    --datadir=/usr/share \
+    --sysconfdir=%{_sysconfdir} \
+    --sharedstatedir=%{_localstatedir}/lib \
+    --localstatedir=%{_localstatedir} \
+    --libdir=/usr/lib64 \
+    --localedir=/usr/share/locale \
+    --infodir=/usr/share/info \
+    --mandir=/usr/share/man \
+    --disable-silent-rules \
+    --disable-dependency-tracking \
+    --enable-kernel=3.10 \
+    --without-cvs \
+    --disable-profile \
+    --disable-debug \
+    --without-gd  \
+    --enable-clocale=gnu \
+    --enable-add-ons \
+    --without-selinux \
+    --enable-obsolete-rpc \
+    --build=%{glibc_target} \
+    --host=%{glibc_target} \
+    --with-pkgversion='Clear Linux Software for Intel Architecture' \
+    --enable-lock-elision=yes \
+    --enable-bind-now  \
+    --enable-tunables \
+    --disable-stack-protector \
+    --enable-obsolete-nsl \
+    --disable-cet \
+    --disable-werror \
+    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--as-needed -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -Wl,-z,now -Wl,-z,relro -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-math-errno -fno-stack-protector -fno-trapping-math -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -fno-plt -Wl,-sort-common -Wno-error -Wp,-D_REENTRANT -pipe -Wl,--allow-multiple-definition -ffat-lto-objects -fPIC -fprofile-use=/var/tmp/pgo -fprofile-dir=/var/tmp/pgo -fprofile-abs-path -fprofile-correction -fprofile-partial-training -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1" \
+    libc_cv_slibdir=/usr/lib64 \
+    libc_cv_complocaledir=/usr/share/locale
+    
+make %{?_smp_mflags} V=1 VERBOSE=1
+make USE_CLOCK_GETTIME=1 bench %{?_smp_mflags} V=1 VERBOSE=1 || :
 popd
 
 mkdir ../glibc-buildroot32
@@ -311,11 +381,12 @@ unset CFLAGS
 unset CXXFLAGS
 unset FCFLAGS
 unset FFLAGS
-unset CFFLAGS
+UNSET CFFLAGS
 unset ASFLAGS
 unset LDFLAGS
 export CFLAGS="-O3 -m32 -march=native -mtune=native -mstackrealign -g2  -Wl,-z,max-page-size=0x1000"
-export LDFLAGS="-O3 -m32 -march=native -mtune=native -mstackrealign -g2  -Wl,-z,max-page-size=0x1000"
+
+export LDFLAGS="-Wl,-z,max-page-size=0x1000"
 
 ../glibc-2.31/configure \
     --prefix=/usr \
