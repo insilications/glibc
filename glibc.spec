@@ -60,6 +60,10 @@ BuildRequires:	python3-dev
 BuildRequires:	glibc
 BuildRequires:	glibc-dev
 BuildRequires:	glibc-staticdev
+%define _unpackaged_files_terminate_build 0
+# Suppress stripping binaries
+%define __strip /bin/true
+%define debug_package %{nil}
 
 %description
 GNU C library.
@@ -815,8 +819,6 @@ popd
 /usr/lib64/crti.o
 /usr/lib64/crtn.o
 /usr/lib64/gcrt1.o
-/usr/lib64/grcrt1.o
-/usr/lib64/rcrt1.o
 /usr/lib64/libBrokenLocale.so
 /usr/lib64/libanl.so
 /usr/lib64/libc.so
