@@ -236,24 +236,24 @@ export LANG=C
 mkdir ../glibc-buildroot
 pushd ../glibc-buildroot
 
-export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
-# -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none
-# gcc: -feliminate-unused-debug-types -fipa-pta -Wno-error -fno-common
-export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -fvisibility-inlines-hidden -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+# -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none  -fipa-pta
+# gcc: -feliminate-unused-debug-types -Wno-error -fno-common
+export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -fvisibility-inlines-hidden -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
 #
-export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
-export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
-export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
 #
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
 #
-export ASFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -g -O3 -march=native -mtune=native"
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 #
-export MAKEFLAGS=%{?_smp_mflags}
+# export MAKEFLAGS=%{?_smp_mflags}
 #
 #global _lto_cflags 1
 %global _lto_cflags %{nil}
@@ -299,8 +299,7 @@ export CCACHE_DISABLE=1
     --enable-obsolete-nsl \
     --disable-cet \
     --disable-werror \
-    --disable-profile \
-    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,--build-id=sha1 -Wl,--enable-new-dtags -Wl,--hash-style=gnu -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -floop-nest-optimize -fno-stack-protector -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -fipa-pta -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000" \
+    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
 
