@@ -236,18 +236,18 @@ export LANG=C
 mkdir ../glibc-buildroot
 pushd ../glibc-buildroot
 
-export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export CFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 # -fno-PIE -fno-PIE -m64 -no-pie -fpic -fvisibility=hidden -flto-partition=none  -fipa-pta
 # gcc: -feliminate-unused-debug-types -Wno-error -fno-common
-export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -fvisibility-inlines-hidden -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export CXXFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -fvisibility-inlines-hidden -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 #
-export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
-export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
-export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export FCFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export FFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
+export CFFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 #
-export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000"
+export LDFLAGS="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
 #
-export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -g -O3 -march=native -mtune=native"
+export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -g -O3 -march=native -mtune=native -Wl,-z,max-page-size=0x1000"
 #
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -299,7 +299,7 @@ export CCACHE_DISABLE=1
     --enable-obsolete-nsl \
     --disable-cet \
     --disable-werror \
-    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000" \
+    --with-nonshared-cflags="-g -O3 -march=native -mtune=native -fgraphite-identity -Wall -Wl,-O2 -falign-functions=32 -flimit-function-alignment -fdevirtualize-at-ltrans -floop-nest-optimize -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops -malign-data=cacheline -feliminate-unused-debug-types -Wno-error -pipe -fPIC -m64 -Wl,-z,max-page-size=0x1000 -D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
 
