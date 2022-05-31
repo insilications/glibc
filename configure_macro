@@ -30,7 +30,7 @@ pushd ../glibc-buildroot
     --without-cvs \
     --disable-profile \
     --disable-debug \
-    --without-gd  \
+    --without-gd \
     --enable-clocale=gnu \
     --enable-add-ons \
     --without-selinux \
@@ -39,7 +39,7 @@ pushd ../glibc-buildroot
     --host=%{glibc_target} \
     --with-pkgversion='Clear Linux Software for Intel Architecture' \
     --enable-lock-elision=yes \
-    --enable-bind-now  \
+    --enable-bind-now \
     --enable-tunables \
     --disable-stack-protector \
     --enable-obsolete-nsl \
