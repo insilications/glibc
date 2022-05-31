@@ -9,8 +9,12 @@ mv -v $supported.new $supported
 if [ ! -d "../glibc-buildroot" ]; then
     mkdir ../glibc-buildroot;
 fi
+
 pushd ../glibc-buildroot
 ../glibc/configure \
+    --build=x86_64-generic-linux \
+    --host=x86_64-generic-linux \
+    --target=x86_64-generic-linux \
     --prefix=/usr \
     --exec_prefix=/usr \
     --bindir=/usr/bin \
@@ -35,8 +39,6 @@ pushd ../glibc-buildroot
     --enable-add-ons \
     --without-selinux \
     --enable-obsolete-rpc \
-    --build=%{glibc_target} \
-    --host=%{glibc_target} \
     --with-pkgversion='Clear Linux Software for Intel Architecture' \
     --enable-lock-elision=yes \
     --enable-bind-now \
