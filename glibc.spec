@@ -82,6 +82,10 @@ abi components for the glibc package.
 %package bin
 Summary: bin components for the glibc package.
 Group: Binaries
+Provides: catchsegv
+Provides: ldd
+Provides: libc-bin
+Provides: sln
 
 %description bin
 bin components for the glibc package.
@@ -93,6 +97,7 @@ Group: Development
 Requires: glibc-bin = %{version}-%{release}
 Provides: glibc-devel = %{version}-%{release}
 Requires: glibc = %{version}-%{release}
+Requires: rpcsvc-proto-dev
 
 %description dev
 dev components for the glibc package.
@@ -161,6 +166,7 @@ libc32 components for the glibc package.
 %package locale
 Summary: locale components for the glibc package.
 Group: Default
+Provides: libc6-locale
 
 %description locale
 locale components for the glibc package.
@@ -169,6 +175,7 @@ locale components for the glibc package.
 %package nscd
 Summary: nscd components for the glibc package.
 Group: Default
+Provides: nscd
 
 %description nscd
 nscd components for the glibc package.
@@ -245,7 +252,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654034583
+export SOURCE_DATE_EPOCH=1654035866
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -411,7 +418,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654034583
+export SOURCE_DATE_EPOCH=1654035866
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -493,9 +500,6 @@ cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
 cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
 cp libc.so  %{buildroot}/usr/lib64/haswell/libc.so.6
 ## install_macro end
-## start %find_lang macros
-%find_lang libc
-## end %find_lang macros
 ## install_append content
 mkdir -p %{buildroot}/var/cache/locale
 
@@ -7424,270 +7428,7 @@ rm -rf %{buildroot}/etc || :
 /usr/share/locale/wal_ET.UTF-8/LC_PAPER
 /usr/share/locale/wal_ET.UTF-8/LC_TELEPHONE
 /usr/share/locale/wal_ET.UTF-8/LC_TIME
-/usr/share/locale/wo_SN.UTF-8/LC_ADDRESS
-/usr/share/locale/wo_SN.UTF-8/LC_COLLATE
-/usr/share/locale/wo_SN.UTF-8/LC_CTYPE
-/usr/share/locale/wo_SN.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/wo_SN.UTF-8/LC_MEASUREMENT
-/usr/share/locale/wo_SN.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/wo_SN.UTF-8/LC_MONETARY
-/usr/share/locale/wo_SN.UTF-8/LC_NAME
-/usr/share/locale/wo_SN.UTF-8/LC_NUMERIC
-/usr/share/locale/wo_SN.UTF-8/LC_PAPER
-/usr/share/locale/wo_SN.UTF-8/LC_TELEPHONE
-/usr/share/locale/wo_SN.UTF-8/LC_TIME
-/usr/share/locale/xh_ZA.UTF-8/LC_ADDRESS
-/usr/share/locale/xh_ZA.UTF-8/LC_COLLATE
-/usr/share/locale/xh_ZA.UTF-8/LC_CTYPE
-/usr/share/locale/xh_ZA.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/xh_ZA.UTF-8/LC_MEASUREMENT
-/usr/share/locale/xh_ZA.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/xh_ZA.UTF-8/LC_MONETARY
-/usr/share/locale/xh_ZA.UTF-8/LC_NAME
-/usr/share/locale/xh_ZA.UTF-8/LC_NUMERIC
-/usr/share/locale/xh_ZA.UTF-8/LC_PAPER
-/usr/share/locale/xh_ZA.UTF-8/LC_TELEPHONE
-/usr/share/locale/xh_ZA.UTF-8/LC_TIME
-/usr/share/locale/xh_ZA.iso88591/LC_ADDRESS
-/usr/share/locale/xh_ZA.iso88591/LC_COLLATE
-/usr/share/locale/xh_ZA.iso88591/LC_CTYPE
-/usr/share/locale/xh_ZA.iso88591/LC_IDENTIFICATION
-/usr/share/locale/xh_ZA.iso88591/LC_MEASUREMENT
-/usr/share/locale/xh_ZA.iso88591/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/xh_ZA.iso88591/LC_MONETARY
-/usr/share/locale/xh_ZA.iso88591/LC_NAME
-/usr/share/locale/xh_ZA.iso88591/LC_NUMERIC
-/usr/share/locale/xh_ZA.iso88591/LC_PAPER
-/usr/share/locale/xh_ZA.iso88591/LC_TELEPHONE
-/usr/share/locale/xh_ZA.iso88591/LC_TIME
-/usr/share/locale/yi_US.UTF-8/LC_ADDRESS
-/usr/share/locale/yi_US.UTF-8/LC_COLLATE
-/usr/share/locale/yi_US.UTF-8/LC_CTYPE
-/usr/share/locale/yi_US.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/yi_US.UTF-8/LC_MEASUREMENT
-/usr/share/locale/yi_US.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/yi_US.UTF-8/LC_MONETARY
-/usr/share/locale/yi_US.UTF-8/LC_NAME
-/usr/share/locale/yi_US.UTF-8/LC_NUMERIC
-/usr/share/locale/yi_US.UTF-8/LC_PAPER
-/usr/share/locale/yi_US.UTF-8/LC_TELEPHONE
-/usr/share/locale/yi_US.UTF-8/LC_TIME
-/usr/share/locale/yi_US.cp1255/LC_ADDRESS
-/usr/share/locale/yi_US.cp1255/LC_COLLATE
-/usr/share/locale/yi_US.cp1255/LC_CTYPE
-/usr/share/locale/yi_US.cp1255/LC_IDENTIFICATION
-/usr/share/locale/yi_US.cp1255/LC_MEASUREMENT
-/usr/share/locale/yi_US.cp1255/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/yi_US.cp1255/LC_MONETARY
-/usr/share/locale/yi_US.cp1255/LC_NAME
-/usr/share/locale/yi_US.cp1255/LC_NUMERIC
-/usr/share/locale/yi_US.cp1255/LC_PAPER
-/usr/share/locale/yi_US.cp1255/LC_TELEPHONE
-/usr/share/locale/yi_US.cp1255/LC_TIME
-/usr/share/locale/yo_NG.UTF-8/LC_ADDRESS
-/usr/share/locale/yo_NG.UTF-8/LC_COLLATE
-/usr/share/locale/yo_NG.UTF-8/LC_CTYPE
-/usr/share/locale/yo_NG.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/yo_NG.UTF-8/LC_MEASUREMENT
-/usr/share/locale/yo_NG.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/yo_NG.UTF-8/LC_MONETARY
-/usr/share/locale/yo_NG.UTF-8/LC_NAME
-/usr/share/locale/yo_NG.UTF-8/LC_NUMERIC
-/usr/share/locale/yo_NG.UTF-8/LC_PAPER
-/usr/share/locale/yo_NG.UTF-8/LC_TELEPHONE
-/usr/share/locale/yo_NG.UTF-8/LC_TIME
-/usr/share/locale/yue_HK.UTF-8/LC_ADDRESS
-/usr/share/locale/yue_HK.UTF-8/LC_COLLATE
-/usr/share/locale/yue_HK.UTF-8/LC_CTYPE
-/usr/share/locale/yue_HK.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/yue_HK.UTF-8/LC_MEASUREMENT
-/usr/share/locale/yue_HK.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/yue_HK.UTF-8/LC_MONETARY
-/usr/share/locale/yue_HK.UTF-8/LC_NAME
-/usr/share/locale/yue_HK.UTF-8/LC_NUMERIC
-/usr/share/locale/yue_HK.UTF-8/LC_PAPER
-/usr/share/locale/yue_HK.UTF-8/LC_TELEPHONE
-/usr/share/locale/yue_HK.UTF-8/LC_TIME
-/usr/share/locale/yuw_PG.UTF-8/LC_ADDRESS
-/usr/share/locale/yuw_PG.UTF-8/LC_COLLATE
-/usr/share/locale/yuw_PG.UTF-8/LC_CTYPE
-/usr/share/locale/yuw_PG.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/yuw_PG.UTF-8/LC_MEASUREMENT
-/usr/share/locale/yuw_PG.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/yuw_PG.UTF-8/LC_MONETARY
-/usr/share/locale/yuw_PG.UTF-8/LC_NAME
-/usr/share/locale/yuw_PG.UTF-8/LC_NUMERIC
-/usr/share/locale/yuw_PG.UTF-8/LC_PAPER
-/usr/share/locale/yuw_PG.UTF-8/LC_TELEPHONE
-/usr/share/locale/yuw_PG.UTF-8/LC_TIME
-/usr/share/locale/zh_CN.UTF-8/LC_ADDRESS
-/usr/share/locale/zh_CN.UTF-8/LC_COLLATE
-/usr/share/locale/zh_CN.UTF-8/LC_CTYPE
-/usr/share/locale/zh_CN.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/zh_CN.UTF-8/LC_MEASUREMENT
-/usr/share/locale/zh_CN.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_CN.UTF-8/LC_MONETARY
-/usr/share/locale/zh_CN.UTF-8/LC_NAME
-/usr/share/locale/zh_CN.UTF-8/LC_NUMERIC
-/usr/share/locale/zh_CN.UTF-8/LC_PAPER
-/usr/share/locale/zh_CN.UTF-8/LC_TELEPHONE
-/usr/share/locale/zh_CN.UTF-8/LC_TIME
-/usr/share/locale/zh_CN.gb18030/LC_ADDRESS
-/usr/share/locale/zh_CN.gb18030/LC_COLLATE
-/usr/share/locale/zh_CN.gb18030/LC_CTYPE
-/usr/share/locale/zh_CN.gb18030/LC_IDENTIFICATION
-/usr/share/locale/zh_CN.gb18030/LC_MEASUREMENT
-/usr/share/locale/zh_CN.gb18030/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_CN.gb18030/LC_MONETARY
-/usr/share/locale/zh_CN.gb18030/LC_NAME
-/usr/share/locale/zh_CN.gb18030/LC_NUMERIC
-/usr/share/locale/zh_CN.gb18030/LC_PAPER
-/usr/share/locale/zh_CN.gb18030/LC_TELEPHONE
-/usr/share/locale/zh_CN.gb18030/LC_TIME
-/usr/share/locale/zh_CN.gb2312/LC_ADDRESS
-/usr/share/locale/zh_CN.gb2312/LC_COLLATE
-/usr/share/locale/zh_CN.gb2312/LC_CTYPE
-/usr/share/locale/zh_CN.gb2312/LC_IDENTIFICATION
-/usr/share/locale/zh_CN.gb2312/LC_MEASUREMENT
-/usr/share/locale/zh_CN.gb2312/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_CN.gb2312/LC_MONETARY
-/usr/share/locale/zh_CN.gb2312/LC_NAME
-/usr/share/locale/zh_CN.gb2312/LC_NUMERIC
-/usr/share/locale/zh_CN.gb2312/LC_PAPER
-/usr/share/locale/zh_CN.gb2312/LC_TELEPHONE
-/usr/share/locale/zh_CN.gb2312/LC_TIME
-/usr/share/locale/zh_CN.gbk/LC_ADDRESS
-/usr/share/locale/zh_CN.gbk/LC_COLLATE
-/usr/share/locale/zh_CN.gbk/LC_CTYPE
-/usr/share/locale/zh_CN.gbk/LC_IDENTIFICATION
-/usr/share/locale/zh_CN.gbk/LC_MEASUREMENT
-/usr/share/locale/zh_CN.gbk/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_CN.gbk/LC_MONETARY
-/usr/share/locale/zh_CN.gbk/LC_NAME
-/usr/share/locale/zh_CN.gbk/LC_NUMERIC
-/usr/share/locale/zh_CN.gbk/LC_PAPER
-/usr/share/locale/zh_CN.gbk/LC_TELEPHONE
-/usr/share/locale/zh_CN.gbk/LC_TIME
-/usr/share/locale/zh_HK.UTF-8/LC_ADDRESS
-/usr/share/locale/zh_HK.UTF-8/LC_COLLATE
-/usr/share/locale/zh_HK.UTF-8/LC_CTYPE
-/usr/share/locale/zh_HK.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/zh_HK.UTF-8/LC_MEASUREMENT
-/usr/share/locale/zh_HK.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_HK.UTF-8/LC_MONETARY
-/usr/share/locale/zh_HK.UTF-8/LC_NAME
-/usr/share/locale/zh_HK.UTF-8/LC_NUMERIC
-/usr/share/locale/zh_HK.UTF-8/LC_PAPER
-/usr/share/locale/zh_HK.UTF-8/LC_TELEPHONE
-/usr/share/locale/zh_HK.UTF-8/LC_TIME
-/usr/share/locale/zh_HK.big5hkscs/LC_ADDRESS
-/usr/share/locale/zh_HK.big5hkscs/LC_COLLATE
-/usr/share/locale/zh_HK.big5hkscs/LC_CTYPE
-/usr/share/locale/zh_HK.big5hkscs/LC_IDENTIFICATION
-/usr/share/locale/zh_HK.big5hkscs/LC_MEASUREMENT
-/usr/share/locale/zh_HK.big5hkscs/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_HK.big5hkscs/LC_MONETARY
-/usr/share/locale/zh_HK.big5hkscs/LC_NAME
-/usr/share/locale/zh_HK.big5hkscs/LC_NUMERIC
-/usr/share/locale/zh_HK.big5hkscs/LC_PAPER
-/usr/share/locale/zh_HK.big5hkscs/LC_TELEPHONE
-/usr/share/locale/zh_HK.big5hkscs/LC_TIME
-/usr/share/locale/zh_SG.UTF-8/LC_ADDRESS
-/usr/share/locale/zh_SG.UTF-8/LC_COLLATE
-/usr/share/locale/zh_SG.UTF-8/LC_CTYPE
-/usr/share/locale/zh_SG.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/zh_SG.UTF-8/LC_MEASUREMENT
-/usr/share/locale/zh_SG.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_SG.UTF-8/LC_MONETARY
-/usr/share/locale/zh_SG.UTF-8/LC_NAME
-/usr/share/locale/zh_SG.UTF-8/LC_NUMERIC
-/usr/share/locale/zh_SG.UTF-8/LC_PAPER
-/usr/share/locale/zh_SG.UTF-8/LC_TELEPHONE
-/usr/share/locale/zh_SG.UTF-8/LC_TIME
-/usr/share/locale/zh_SG.gb2312/LC_ADDRESS
-/usr/share/locale/zh_SG.gb2312/LC_COLLATE
-/usr/share/locale/zh_SG.gb2312/LC_CTYPE
-/usr/share/locale/zh_SG.gb2312/LC_IDENTIFICATION
-/usr/share/locale/zh_SG.gb2312/LC_MEASUREMENT
-/usr/share/locale/zh_SG.gb2312/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_SG.gb2312/LC_MONETARY
-/usr/share/locale/zh_SG.gb2312/LC_NAME
-/usr/share/locale/zh_SG.gb2312/LC_NUMERIC
-/usr/share/locale/zh_SG.gb2312/LC_PAPER
-/usr/share/locale/zh_SG.gb2312/LC_TELEPHONE
-/usr/share/locale/zh_SG.gb2312/LC_TIME
-/usr/share/locale/zh_SG.gbk/LC_ADDRESS
-/usr/share/locale/zh_SG.gbk/LC_COLLATE
-/usr/share/locale/zh_SG.gbk/LC_CTYPE
-/usr/share/locale/zh_SG.gbk/LC_IDENTIFICATION
-/usr/share/locale/zh_SG.gbk/LC_MEASUREMENT
-/usr/share/locale/zh_SG.gbk/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_SG.gbk/LC_MONETARY
-/usr/share/locale/zh_SG.gbk/LC_NAME
-/usr/share/locale/zh_SG.gbk/LC_NUMERIC
-/usr/share/locale/zh_SG.gbk/LC_PAPER
-/usr/share/locale/zh_SG.gbk/LC_TELEPHONE
-/usr/share/locale/zh_SG.gbk/LC_TIME
-/usr/share/locale/zh_TW.UTF-8/LC_ADDRESS
-/usr/share/locale/zh_TW.UTF-8/LC_COLLATE
-/usr/share/locale/zh_TW.UTF-8/LC_CTYPE
-/usr/share/locale/zh_TW.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/zh_TW.UTF-8/LC_MEASUREMENT
-/usr/share/locale/zh_TW.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_TW.UTF-8/LC_MONETARY
-/usr/share/locale/zh_TW.UTF-8/LC_NAME
-/usr/share/locale/zh_TW.UTF-8/LC_NUMERIC
-/usr/share/locale/zh_TW.UTF-8/LC_PAPER
-/usr/share/locale/zh_TW.UTF-8/LC_TELEPHONE
-/usr/share/locale/zh_TW.UTF-8/LC_TIME
-/usr/share/locale/zh_TW.big5/LC_ADDRESS
-/usr/share/locale/zh_TW.big5/LC_COLLATE
-/usr/share/locale/zh_TW.big5/LC_CTYPE
-/usr/share/locale/zh_TW.big5/LC_IDENTIFICATION
-/usr/share/locale/zh_TW.big5/LC_MEASUREMENT
-/usr/share/locale/zh_TW.big5/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_TW.big5/LC_MONETARY
-/usr/share/locale/zh_TW.big5/LC_NAME
-/usr/share/locale/zh_TW.big5/LC_NUMERIC
-/usr/share/locale/zh_TW.big5/LC_PAPER
-/usr/share/locale/zh_TW.big5/LC_TELEPHONE
-/usr/share/locale/zh_TW.big5/LC_TIME
-/usr/share/locale/zh_TW.euctw/LC_ADDRESS
-/usr/share/locale/zh_TW.euctw/LC_COLLATE
-/usr/share/locale/zh_TW.euctw/LC_CTYPE
-/usr/share/locale/zh_TW.euctw/LC_IDENTIFICATION
-/usr/share/locale/zh_TW.euctw/LC_MEASUREMENT
-/usr/share/locale/zh_TW.euctw/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zh_TW.euctw/LC_MONETARY
-/usr/share/locale/zh_TW.euctw/LC_NAME
-/usr/share/locale/zh_TW.euctw/LC_NUMERIC
-/usr/share/locale/zh_TW.euctw/LC_PAPER
-/usr/share/locale/zh_TW.euctw/LC_TELEPHONE
-/usr/share/locale/zh_TW.euctw/LC_TIME
-/usr/share/locale/zu_ZA.UTF-8/LC_ADDRESS
-/usr/share/locale/zu_ZA.UTF-8/LC_COLLATE
-/usr/share/locale/zu_ZA.UTF-8/LC_CTYPE
-/usr/share/locale/zu_ZA.UTF-8/LC_IDENTIFICATION
-/usr/share/locale/zu_ZA.UTF-8/LC_MEASUREMENT
-/usr/share/locale/zu_ZA.UTF-8/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zu_ZA.UTF-8/LC_MONETARY
-/usr/share/locale/zu_ZA.UTF-8/LC_NAME
-/usr/share/locale/zu_ZA.UTF-8/LC_NUMERIC
-/usr/share/locale/zu_ZA.UTF-8/LC_PAPER
-/usr/share/locale/zu_ZA.UTF-8/LC_TELEPHONE
-/usr/share/locale/zu_ZA.UTF-8/LC_TIME
-/usr/share/locale/zu_ZA.iso88591/LC_ADDRESS
-/usr/share/locale/zu_ZA.iso88591/LC_COLLATE
-/usr/share/locale/zu_ZA.iso88591/LC_CTYPE
-/usr/share/locale/zu_ZA.iso88591/LC_IDENTIFICATION
-/usr/share/locale/zu_ZA.iso88591/LC_MEASUREMENT
-/usr/share/locale/zu_ZA.iso88591/LC_MESSAGES/SYS_LC_MESSAGES
-/usr/share/locale/zu_ZA.iso88591/LC_MONETARY
-/usr/share/locale/zu_ZA.iso88591/LC_NAME
-/usr/share/locale/zu_ZA.iso88591/LC_NUMERIC
-/usr/share/locale/zu_ZA.iso88591/LC_PAPER
-/usr/share/locale/zu_ZA.iso88591/LC_TELEPHONE
-/usr/share/locale/zu_ZA.iso88591/LC_TIME
+/usr/share/locale/wo_SN.U
 
 %files locale -f libc.lang
 %defattr(-,root,root,-)
