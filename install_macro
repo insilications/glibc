@@ -1,3 +1,4 @@
+pushd glibc-build/
 %make_install
 mkdir -p %{buildroot}/usr/lib64/haswell
 cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6

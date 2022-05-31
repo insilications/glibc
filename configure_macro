@@ -1,8 +1,12 @@
 %define glibc_target x86_64-generic-linux
 %define abi_package %{nil}
 
+if [ ! -d "glibc-build" ]; then
+    mkdir glibc-build;
+fi
 
-./configure \
+pushd glibc-build/
+../configure \
     --build=x86_64-generic-linux \
     --host=x86_64-generic-linux \
     --prefix=/usr \
@@ -37,6 +41,7 @@
     --enable-obsolete-nsl \
     --disable-cet \
     --disable-static-pie \
+    --disable-default-pie \
     --disable-werror \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
