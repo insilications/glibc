@@ -6,6 +6,8 @@ bison
 gcc-dev32
 gcc-libgcc32
 gcc-libstdc++32
+gcc-staticdev32
+gcc-lib32
 gettext-dev
 grep
 linux-libc-headers
