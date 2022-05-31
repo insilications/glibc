@@ -1,3 +1,4 @@
+%define glibc_target x86_64-generic-linux
 %define abi_package %{nil}
 
 unset ASFLAGS

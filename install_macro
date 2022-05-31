@@ -1,2 +1,8 @@
 pushd ../glibc-buildroot
 %make_install
+mkdir -p %{buildroot}/usr/lib64/haswell
+cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
+cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
+cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
+cp libc.so  %{buildroot}/usr/lib64/haswell/libc.so.6
+popd

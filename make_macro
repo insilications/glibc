@@ -1,2 +1,2 @@
-make -j12 V=1 VERBOSE=1
+make -O -j14 V=1
 popd
