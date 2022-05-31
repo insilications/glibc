@@ -1,6 +1,11 @@
 %define glibc_target x86_64-generic-linux
 %define abi_package %{nil}
 
+# Keep only the UTF-8 locales...
+supported=./localedata/SUPPORTED
+sed -nr '/^(#|SUPPORTED-LOCALES=|.*\/UTF-8)/p' $supported > $supported.new
+mv -v $supported.new $supported
+
 if [ ! -d "glibc-build" ]; then
     mkdir glibc-build;
 fi
