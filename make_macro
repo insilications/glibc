@@ -1,0 +1,3 @@
+make  %{?_smp_mflags}  V=1 VERBOSE=1
+make USE_CLOCK_GETTIME=1 bench-build %{?_smp_mflags}
+popd

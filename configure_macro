@@ -1,0 +1,50 @@
+%define glibc_target x86_64-generic-linux
+%define abi_package %{nil}
+
+# Keep only the UTF-8 locales...
+supported=./localedata/SUPPORTED
+sed -nr '/^(#|SUPPORTED-LOCALES=|.*\/UTF-8)/p' $supported > $supported.new
+mv -v $supported.new $supported
+
+if [ ! -d "../glibc-buildroot" ]; then
+    mkdir ../glibc-buildroot;
+fi
+pushd ../glibc-buildroot
+../glibc/configure \
+    --prefix=/usr \
+    --exec_prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib64/glibc \
+    --datadir=/usr/share \
+    --sysconfdir=%{_sysconfdir} \
+    --sharedstatedir=%{_localstatedir}/lib \
+    --localstatedir=%{_localstatedir} \
+    --libdir=/usr/lib64 \
+    --localedir=/usr/share/locale \
+    --infodir=/usr/share/info \
+    --mandir=/usr/share/man \
+    --disable-silent-rules \
+    --disable-dependency-tracking \
+    --enable-kernel=3.10 \
+    --without-cvs \
+    --disable-profile \
+    --disable-debug \
+    --without-gd  \
+    --enable-clocale=gnu \
+    --enable-add-ons \
+    --without-selinux \
+    --enable-obsolete-rpc \
+    --build=%{glibc_target} \
+    --host=%{glibc_target} \
+    --with-pkgversion='Clear Linux Software for Intel Architecture' \
+    --enable-lock-elision=yes \
+    --enable-bind-now  \
+    --enable-tunables \
+    --disable-stack-protector \
+    --enable-obsolete-nsl \
+    --disable-cet \
+    --disable-static-pie \
+    --disable-werror \
+    libc_cv_slibdir=/usr/lib64 \
+    libc_cv_complocaledir=/usr/share/locale

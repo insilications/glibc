@@ -1,0 +1,45 @@
+export ASFLAGS="-m32"
+if [ ! -d "../glibc-buildroot32" ]; then
+    mkdir ../glibc-buildroot32;
+fi
+pushd ../glibc-buildroot32
+../build32/configure \
+    --prefix=/usr \
+    --exec_prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib32/glibc \
+    --datadir=/usr/share \
+    --sysconfdir=%{_sysconfdir} \
+    --sharedstatedir=%{_localstatedir}/lib \
+    --localstatedir=%{_localstatedir} \
+    --libdir=/usr/lib32 \
+    --localedir=/usr/share/locale \
+    --infodir=/usr/share/info \
+    --mandir=/usr/share/man \
+    --disable-silent-rules \
+    --disable-dependency-tracking \
+    --enable-kernel=3.10 \
+    --without-cvs \
+    --disable-profile \
+    --disable-debug \
+    --without-gd \
+    --enable-clocale=gnu \
+    --enable-add-ons \
+    --without-selinux \
+    --enable-obsolete-rpc \
+    --build=i686-generic-linux \
+    --host=i686-linux-gnu \
+    --target=i686-generic-linux \
+    --with-pkgversion='Clear Linux Software for Intel Architecture' \
+    --enable-lock-elision=yes \
+    --enable-bind-now \
+    --enable-tunables \
+    --disable-stack-protector \
+    --enable-obsolete-nsl \
+    --disable-cet \
+    --disable-static-pie \
+    --disable-werror \
+    libc_cv_slibdir=/usr/lib32 \
+    libc_cv_complocaledir=/usr/share/locale \
+    CC="gcc -m32" CXX="g++ -m32" i686-linux-gnu

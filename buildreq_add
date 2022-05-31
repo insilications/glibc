@@ -1,4 +1,15 @@
 #
-# This file contains extra pkgconfig build requirements that don't get picked up but are 
+# This file contains extra pkgconfig build requirements that don't get picked up but are
 # desirable. One name per line, no whitespace.
 #
+bison
+BuildRequires:
+gcc-dev32
+gcc-libgcc32
+gcc-libstdc++32
+gettext-dev
+grep
+linux-libc-headers
+python3-dev
+texinfo
+util-linux

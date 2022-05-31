@@ -1,0 +1,2 @@
+pushd ../glibc-buildroot
+%make_install

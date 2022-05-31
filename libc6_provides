@@ -1,0 +1,8 @@
+glibc
+glibc-extra-nss
+libsotruss
+libmemusage
+libsegfault
+libthread-db1
+rtld(GNU_HASH)
+libc6

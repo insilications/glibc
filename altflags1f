@@ -1,0 +1,25 @@
+export CCACHE_DISABLE=true
+export V=1
+export VERBOSE=1
+export PATH="/usr/lib64/ccache/bin:$PATH"
+export CCACHE_NOHASHDIR=true
+export CCACHE_CPP2=true
+export CCACHE_SLOPPINESS=modules,include_file_mtime,include_file_ctime,time_macros,pch_defines,file_stat_matches,clang_index_store,system_headers,locale
+export CCACHE_DIR=/var/tmp/ccache
+export CCACHE_BASEDIR=/builddir/build/BUILD
+#
+unset ASFLAGS
+unset LDFLAGS
+unset CFLAGS
+unset CXXFLAGS
+unset FCFLAGS
+unset FFLAGS
+export AR=/usr/bin/gcc-ar
+export RANLIB=/usr/bin/gcc-ranlib
+export NM=/usr/bin/gcc-nm
+# -fipa-pta -fgraphite-identity -floop-nest-optimize -floop-block -ftree-loop-distribute-patterns -ftree-loop-vectorize -ftree-vectorize -funroll-loops
+export CFLAGS="-Wno-error -fno-PIE -g2 -O3 -march=native -mtune=native -m64 -Wl,-z,max-page-size=0x1000 -Wl,-O2 -fPIC -fno-stack-protector -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -ffat-lto-objects"
+#
+export LDFLAGS="-Wno-error -no-pie -fno-PIE -g2 -O3 -march=native -mtune=native -m64 -Wl,-z,max-page-size=0x1000 -Wl,-O2 -fPIC -fno-stack-protector -falign-functions=32 -flimit-function-alignment -fasynchronous-unwind-tables -fdevirtualize-at-ltrans -fuse-ld=bfd -fuse-linker-plugin -malign-data=cacheline -feliminate-unused-debug-types -ffat-lto-objects"
+#
+export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
