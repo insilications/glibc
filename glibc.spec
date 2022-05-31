@@ -14,7 +14,6 @@ License  : GPL-2.0 GPL-2.0+ LGPL-2.0+ LGPL-2.0++ LGPL-2.1
 Requires: clr-systemd-config-data
 Requires: filesystem
 Requires: nss-altfiles-lib
-BuildRequires : BuildRequires:
 BuildRequires : bison
 BuildRequires : buildreq-configure
 BuildRequires : gcc
@@ -39,29 +38,26 @@ BuildRequires : util-linux
 %define debug_package %{nil}
 Patch1: 0001-Set-host.conf-multi-to-on-by-default.patch
 Patch2: 0001-sysdeps-unix-Add-support-for-usr-lib32-as-a-system-l.patch
-Patch3: nsswitch.patch
-Patch4: ld-so-cache-in-var.patch
-Patch5: mkdir-ldconfig.patch
-Patch6: locale-var-cache.patch
-Patch7: nonscd.patch
-Patch8: alternate_trim.patch
-Patch9: tzselect-proper-zone-file.patch
-Patch10: use_madv_free.patch
-Patch11: malloc_tune.patch
-Patch12: 0001-misc-Support-fallback-stateless-shells-path-in-absen.patch
-Patch13: stateless.patch
-Patch14: mathlto.patch
-Patch15: vzeroupper-2.27.patch
-Patch16: 0001-x86-64-Remove-sysdeps-x86_64-fpu-s_sinf.S.patch
-Patch17: pause.patch
-Patch18: spin-smarter.patch
-Patch19: nostackshrink.patch
-Patch20: 0001-Set-vector-width-and-alignment-to-fix-GCC-AVX-issue.patch
-Patch21: disable-vectorization-even-more.patch
-Patch22: 0001-Force-ffsll-to-be-64-bytes-aligned.patch
-Patch23: utf8-locale-naming.patch
-Patch24: noclone3yet.patch
-Patch25: seccomp_workaround.patch
+Patch3: ld-so-cache-in-var.patch
+Patch4: mkdir-ldconfig.patch
+Patch5: locale-var-cache.patch
+Patch6: nonscd.patch
+Patch7: alternate_trim.patch
+Patch8: tzselect-proper-zone-file.patch
+Patch9: malloc_tune.patch
+Patch10: 0001-misc-Support-fallback-stateless-shells-path-in-absen.patch
+Patch11: stateless.patch
+Patch12: mathlto.patch
+Patch13: vzeroupper-2.27.patch
+Patch14: pause.patch
+Patch15: spin-smarter.patch
+Patch16: nostackshrink.patch
+Patch17: 0001-Set-vector-width-and-alignment-to-fix-GCC-AVX-issue.patch
+Patch18: disable-vectorization-even-more.patch
+Patch19: 0001-Force-ffsll-to-be-64-bytes-aligned.patch
+Patch20: utf8-locale-naming.patch
+Patch21: noclone3yet.patch
+Patch22: seccomp_workaround.patch
 
 %description
 This directory contains the sources of the GNU C Library.
@@ -92,9 +88,6 @@ cd %{_builddir}/glibc-2.35
 %patch20 -p1
 %patch21 -p1
 %patch22 -p1
-%patch23 -p1
-%patch24 -p1
-%patch25 -p1
 pushd %{_builddir}
 cp -a %{_builddir}/glibc-2.35 build32
 popd
@@ -105,7 +98,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654005412
+export SOURCE_DATE_EPOCH=1654006066
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -262,7 +255,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654005412
+export SOURCE_DATE_EPOCH=1654006066
 rm -rf %{buildroot}
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
@@ -355,7 +348,7 @@ rm -fv %{buildroot}/usr/lib64/gconv/gconv-modules.cache
 #iconvconfig --prefix=%{buildroot}
 
 
-make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot}  %{?_smp_mflags}
+make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot}  -j14
 
 # Make ldconfig not fail
 install -d %{buildroot}/var/cache/ldconfig
@@ -370,7 +363,7 @@ find ../lib64/glibc/benchmarks -type f -exec ln -s {} . \;
 popd
 
 ## Generate UTF-8 locale-related data
-make -s -O %{?_smp_mflags} localedata/install-locale-files DESTDIR=%{buildroot} install_root=%{buildroot}
+make -s -O -j14 localedata/install-locale-files DESTDIR=%{buildroot} install_root=%{buildroot}
 for origpath in %{buildroot}/usr/share/locale/*.utf8*; do
   rename -v .utf8 .UTF-8 "$origpath"
 done

@@ -2,12 +2,7 @@
 %define abi_package %{nil}
 
 
-if [ ! -d "../glibc-buildroot" ]; then
-    mkdir ../glibc-buildroot;
-fi
-
-pushd ../glibc-buildroot
-../glibc-2.35/configure \
+./configure \
     --build=x86_64-generic-linux \
     --host=x86_64-generic-linux \
     --prefix=/usr \

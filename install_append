@@ -12,7 +12,7 @@ rm -fv %{buildroot}/usr/lib64/gconv/gconv-modules.cache
 #iconvconfig --prefix=%{buildroot}
 
 
-make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot}  %{?_smp_mflags}
+make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot}  -j14
 
 # Make ldconfig not fail
 install -d %{buildroot}/var/cache/ldconfig

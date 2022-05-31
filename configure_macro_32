@@ -1,14 +1,7 @@
 %define glibc_target x86_64-generic-linux
 %define abi_package %{nil}
 
-unset ASFLAGS
-export CFLAGS="-O3 -m32 -march=westmere -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000"
-if [ ! -d "../glibc-buildroot32" ]; then
-    mkdir ../glibc-buildroot32;
-fi
-
-pushd ../glibc-buildroot32
-../build32/configure \
+./configure \
     --prefix=/usr \
     --exec_prefix=/usr \
     --bindir=/usr/bin \
