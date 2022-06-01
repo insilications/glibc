@@ -1,7 +1,7 @@
 export CFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export FCFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export FFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
-export CXXFLAGS="-fvisibility-inlines-hidden -O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
+export CXXFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export LDFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export ASMFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 unset ASFLAGS

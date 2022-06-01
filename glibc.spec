@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : glibc
 Version  : 2.35
-Release  : 1501
+Release  : 1503
 URL      : file:///insilications/apps/glibc-2.35.tar.gz
 Source0  : file:///insilications/apps/glibc-2.35.tar.gz
 Summary  : No detailed summary available
@@ -254,7 +254,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654080889
+export SOURCE_DATE_EPOCH=1654081702
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -350,7 +350,7 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
 export CFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export FCFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export FFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
-export CXXFLAGS="-fvisibility-inlines-hidden -O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
+export CXXFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export LDFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export ASMFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 unset ASFLAGS
@@ -425,7 +425,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654080889
+export SOURCE_DATE_EPOCH=1654081702
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -441,7 +441,7 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/share/pkgconfig"
 export CFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export FCFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export FFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
-export CXXFLAGS="-fvisibility-inlines-hidden -O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
+export CXXFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export LDFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 export ASMFLAGS="-O3 -m32 -march=skylake -mtune=skylake -mstackrealign -Wl,-z,max-page-size=0x1000 -pipe"
 unset ASFLAGS
@@ -460,7 +460,7 @@ export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
 ## install_macro_32 start
 pushd ../build32/
 pushd glibc-build32/
-%make_install32
+make install DESTDIR=%{buildroot} install_root=%{buildroot} -j14
 if [ -d  %{buildroot}/usr/lib32/pkgconfig ]
 then
     pushd %{buildroot}/usr/lib32/pkgconfig
@@ -500,7 +500,7 @@ export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
 ## altflags1f end
 ## install_macro start
 pushd glibc-build/
-%make_install
+make install DESTDIR=%{buildroot} install_root=%{buildroot} -j14
 mkdir -p %{buildroot}/usr/lib64/haswell
 cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
 cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1

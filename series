@@ -20,3 +20,4 @@ disable-vectorization-even-more.patch
 utf8-locale-naming.patch
 noclone3yet.patch
 seccomp_workaround.patch
+nsswitch.patch
