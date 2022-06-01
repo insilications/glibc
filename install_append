@@ -67,3 +67,4 @@ ln -s ld-2.35.so  %{buildroot}/usr/lib64/ld-linux-x86-64.so.2
 
 rm -rf %{buildroot}/var || :
 rm -rf %{buildroot}/etc || :
+rm %{buildroot}/usr/share/locale/locale-archive
