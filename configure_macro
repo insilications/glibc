@@ -10,6 +10,8 @@ if [ ! -d "glibc-build" ]; then
     mkdir glibc-build;
 fi
 
+#! --enable-static-nss
+
 pushd glibc-build/
 ../configure \
     --build=x86_64-generic-linux \
@@ -42,11 +44,15 @@ pushd glibc-build/
     --enable-lock-elision=yes \
     --enable-bind-now \
     --enable-tunables \
+    --enable-stack-protector=no \
     --disable-stack-protector \
     --enable-obsolete-nsl \
     --disable-cet \
     --disable-static-pie \
     --disable-default-pie \
     --disable-werror \
+    --enable-mathvec \
+    --disable-multi-arch \
+    --with-nonshared-cflags="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
