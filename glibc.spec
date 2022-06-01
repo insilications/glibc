@@ -21,6 +21,7 @@ Requires: clr-systemd-config-data
 Requires: filesystem
 Requires: nss-altfiles-lib
 Requires: libc6 = %{version}-%{release}
+Requires: libc6-dev = %{version}-%{release}
 BuildRequires : bison
 BuildRequires : gcc
 BuildRequires : gcc-dev
@@ -207,6 +208,16 @@ Provides: rtld(GNU_HASH)
 libc6 components for the glibc package.
 
 
+%package -n libc6-dev
+Summary: libc6-dev components for the glibc package.
+Group: Default
+Requires: glibc-dev
+Provides: libc6-dev
+
+%description -n libc6-dev
+libc6-dev components for the glibc package.
+
+
 %prep
 %setup -q -n glibc-2.35
 cd %{_builddir}/glibc-2.35
@@ -242,7 +253,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654075045
+export SOURCE_DATE_EPOCH=1654076422
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -413,7 +424,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654075045
+export SOURCE_DATE_EPOCH=1654076422
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -611,7 +622,6 @@ rm %{buildroot}/usr/share/locale/locale-archive
 
 %files bin
 %defattr(-,root,root,-)
-/usr/bin/mtrace
 /usr/bin/sln
 
 %files dev
@@ -5599,6 +5609,10 @@ rm %{buildroot}/usr/share/locale/locale-archive
 /usr/share/locale/zu_ZA.UTF-8/LC_PAPER
 /usr/share/locale/zu_ZA.UTF-8/LC_TELEPHONE
 /usr/share/locale/zu_ZA.UTF-8/LC_TIME
+
+%files -n libc6-dev
+%defattr(-,root,root,-)
+/usr/bin/mtrace
 
 %files locale -f libc.lang
 %defattr(-,root,root,-)
