@@ -242,7 +242,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654069650
+export SOURCE_DATE_EPOCH=1654075045
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
@@ -318,7 +318,7 @@ pushd glibc-build/
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
 ## make_macro content
-make -O -j12 V=1
+make -O -j15 V=1
 
 popd
 ## make_macro end
@@ -406,14 +406,14 @@ pushd glibc-build32/
     CC="gcc -m32" CXX="g++ -m32" i686-linux-gnu
 
 ## make_macro_32 content
-make -O -j12 V=1
+make -O -j15 V=1
 
 popd
 ## make_macro_32 end
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654069650
+export SOURCE_DATE_EPOCH=1654075045
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -565,6 +565,7 @@ ln -s ld-2.35.so  %{buildroot}/usr/lib64/ld-linux-x86-64.so.2
 
 rm -rf %{buildroot}/var || :
 rm -rf %{buildroot}/etc || :
+rm %{buildroot}/usr/share/locale/locale-archive
 ## install_append end
 ## custom find_lang start
 %find_lang libc
@@ -4049,7 +4050,6 @@ rm -rf %{buildroot}/etc || :
 /usr/share/locale/lo_LA.UTF-8/LC_PAPER
 /usr/share/locale/lo_LA.UTF-8/LC_TELEPHONE
 /usr/share/locale/lo_LA.UTF-8/LC_TIME
-/usr/share/locale/locale-archive
 /usr/share/locale/locale.alias
 /usr/share/locale/lt_LT.UTF-8/LC_ADDRESS
 /usr/share/locale/lt_LT.UTF-8/LC_COLLATE
