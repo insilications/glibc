@@ -1,5 +1,6 @@
 pushd glibc-build/
-%make_install
+#! %make_install
+make install DESTDIR=%{buildroot} install_root=%{buildroot} -j14
 mkdir -p %{buildroot}/usr/lib64/haswell
 cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
 cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1

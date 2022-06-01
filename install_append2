@@ -1,0 +1,70 @@
+mkdir -p %{buildroot}/var/cache/locale
+
+# FIXME: As of glibc 2.35, the --prefix flag to iconvconfig appears to behave
+# differently, since it hardcodes the prefix path to the cache's module lookup
+# path, which in turn breaks iconv completely (unless GCONV_PATH is set in the
+# environment). Once that issue is resolved (or another BKM is found),
+# re-enable the cache by running the iconvconfig command below. The cache
+# improves performance of iconv, so we want it to be enabled...
+# Upstream report to track:
+# https://sourceware.org/bugzilla/show_bug.cgi?id=28199
+rm -fv %{buildroot}/usr/lib64/gconv/gconv-modules.cache
+#iconvconfig --prefix=%{buildroot}
+
+
+make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot} -j14
+
+# Make ldconfig not fail
+install -d %{buildroot}/var/cache/ldconfig
+
+install -d %{buildroot}%{_datadir}/defaults/etc/
+mv %{buildroot}%{_sysconfdir}/rpc %{buildroot}%{_datadir}/defaults/etc/rpc
+
+mkdir -p %{buildroot}/usr/lib64/glibc/benchmarks
+for f in benchtests/*; do [ -x $f -a ! -d $f ] && cp -a $f %{buildroot}/usr/lib64/glibc/benchmarks; done
+pushd %{buildroot}/usr/bin
+find ../lib64/glibc/benchmarks -type f -exec ln -s {} . \;
+popd
+
+## Generate UTF-8 locale-related data
+make -s -O -j14 localedata/install-locale-files DESTDIR=%{buildroot} install_root=%{buildroot}
+for origpath in %{buildroot}/usr/share/locale/*.utf8*; do
+  rename -v .utf8 .UTF-8 "$origpath"
+done
+
+# Reduce footprint of localedata, since `make localedata/install-locale-files`
+# passes the `--no-hard-links` option to `localedef`.
+hardlink %{buildroot}/usr/share/locale
+
+# ../glibc-buildroot
+popd
+
+ln -sfv /var/cache/locale/locale-archive %{buildroot}/usr/share/locale/locale-archive
+
+mkdir -p %{buildroot}/usr/lib
+ln -s ../lib32/ld-linux.so.2  %{buildroot}/usr/lib/ld-linux.so.2
+
+# for oracle db installer (compat link)
+ln -sf libpthread.a %{buildroot}/usr/lib64/libpthread_nonshared.a
+
+# Get things out of /sbin and /usr/sbin
+mv %{buildroot}/sbin/sln %{buildroot}/usr/bin/sln || :
+mv %{buildroot}/sbin/ldconfig %{buildroot}/usr/bin/ldconfig || :
+mv %{buildroot}/usr/sbin/nscd %{buildroot}/usr/bin/nscd || :
+mv %{buildroot}/usr/sbin/iconvconfig %{buildroot}/usr/bin/iconvconfig || :
+#mv %{buildroot}/usr/sbin/zdump %{buildroot}/usr/bin/zdump || :
+mv %{buildroot}/usr/sbin/* %{buildroot}/usr/bin/ || :
+
+# swup compatibility hack
+cp %{buildroot}/usr/lib64/libc.so.6 %{buildroot}/usr/lib64/libc-2.33.so
+cp %{buildroot}/usr/lib64/libc.so.6 %{buildroot}/usr/lib64/libc-2.35.so
+cp %{buildroot}/usr/lib64/ld-linux-x86-64.so.2 %{buildroot}/usr/lib64/ld-2.33.so
+cp %{buildroot}/usr/lib64/ld-linux-x86-64.so.2 %{buildroot}/usr/lib64/ld-2.35.so
+rm %{buildroot}/usr/lib64/libc.so.6
+rm %{buildroot}/usr/lib64/ld-linux-x86-64.so.2
+ln -s libc-2.35.so %{buildroot}/usr/lib64/libc.so.6
+ln -s ld-2.35.so  %{buildroot}/usr/lib64/ld-linux-x86-64.so.2
+
+rm -rf %{buildroot}/var || :
+rm -rf %{buildroot}/etc || :
+rm %{buildroot}/usr/share/locale/locale-archive
