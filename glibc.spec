@@ -5,16 +5,17 @@
 %define keepstatic 1
 Name     : glibc
 Version  : 2.35
-Release  : 1509
+Release  : 1511
 URL      : file:///insilications/apps/glibc-2.35.tar.gz
 Source0  : file:///insilications/apps/glibc-2.35.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0
+License  : GPL-2.0 LGPL-2.1
 Requires: clr-systemd-config-data
 Requires: filesystem
 Requires: nss-altfiles-lib
 BuildRequires : bison
+BuildRequires : buildreq-configure
 BuildRequires : gcc
 BuildRequires : gcc-dev
 BuildRequires : gcc-dev32
@@ -63,7 +64,8 @@ Patch22: seccomp_workaround.patch
 Patch23: nsswitch.patch
 
 %description
-No detailed description available
+This directory contains the sources of the GNU C Library.
+See the file "version.h" for what release version you have.
 
 %prep
 %setup -q -n glibc-2.35
@@ -101,19 +103,19 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1654530570
+export SOURCE_DATE_EPOCH=1654541728
 export AR=gcc-ar
 export RANLIB=gcc-ranlib
 export NM=gcc-nm
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
-export CFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export ASMFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export CXXFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export FCFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export FFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export LDFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export CFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export ASMFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export CXXFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export FCFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export FFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export LDFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
 export AR=/usr/bin/gcc-ar
 export RANLIB=/usr/bin/gcc-ranlib
 export NM=/usr/bin/gcc-nm
@@ -178,11 +180,11 @@ pushd glibc-build/
     --disable-werror \
     --enable-mathvec \
     --disable-multi-arch \
-    --with-nonshared-cflags="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code" \
+    --with-nonshared-cflags="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
 ## make_macro content
-make -O -j15 V=1
+make -O -j14 V=1
 
 popd
 ## make_macro end
@@ -270,14 +272,14 @@ pushd glibc-build32/
     CC="gcc -m32" CXX="g++ -m32" i686-linux-gnu
 
 ## make_macro_32 content
-make -O -j15 V=1
+make -O -j14 V=1
 
 popd
 ## make_macro_32 end
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1654530570
+export SOURCE_DATE_EPOCH=1654541728
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -334,12 +336,12 @@ export NM=gcc-nm
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1"
-export CFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export ASMFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export CXXFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export FCFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export FFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
-export LDFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fomit-frame-pointer -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export CFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export ASMFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export CXXFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wp,-D_REENTRANT -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export FCFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export FFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
+export LDFLAGS="-m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fPIC -falign-functions=32 -fasynchronous-unwind-tables -fexceptions -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -funwind-tables -fuse-ld=bfd -fuse-linker-plugin -g3 -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -pthread -Wall -Wno-inline -Wp,-D_REENTRANT -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,now,-z,relro,-z,max-page-size=0x1000,-z,separate-code"
 export AR=/usr/bin/gcc-ar
 export RANLIB=/usr/bin/gcc-ranlib
 export NM=/usr/bin/gcc-nm
