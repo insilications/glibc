@@ -1,0 +1,25 @@
+From 0985ca315824b0241287344503c2be2c505d9c14 Mon Sep 17 00:00:00 2001
+From: Francisco Boni Neto <boboniboni@gmail.com>
+Date: Mon, 13 Jun 2022 12:32:27 -0300
+Subject: [PATCH] modify no-pie-ccflag
+
+---
+ Makeconfig | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/Makeconfig b/Makeconfig
+index 47db08d6..21a2638a 100644
+--- a/Makeconfig
++++ b/Makeconfig
+@@ -1055,7 +1055,7 @@ PIC-ccflag = -fPIC
+ endif
+ # This can be changed by a sysdep makefile
+ pie-ccflag = -fpie
+-no-pie-ccflag = -fno-pie
++no-pie-ccflag = -fno-pie -no-pie -Wl,-no-pie
+ # This one should always stay like this unless there is a very good reason.
+ PIE-ccflag = -fPIE
+ ifeq (yes,$(build-profile))
+-- 
+2.36.0
+

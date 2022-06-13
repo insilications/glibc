@@ -5,3 +5,47 @@ cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
 cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
 cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
 cp libc.so  %{buildroot}/usr/lib64/haswell/libc.so.6
+
+
+make install DESTDIR=%{buildroot} install_root=%{buildroot}  %{?_smp_mflags}
+
+%make_install_special() \
+  %{make_install_command} %* \
+  %{make_install_common}
+
+%make_install_command() \
+  %{__make} \\\
+	%{?_smp_mflags:%{_smp_mflags}} \\\
+	DESTDIR=%{?buildroot:%{buildroot}} \\\
+	INSTALLROOT=%{?buildroot:%{buildroot}} \\\
+	install_prefix=%{?buildroot:%{buildroot}} \\\
+	BUILDROOT=%{?buildroot:%{buildroot}} \\\
+	BUILD_ROOT=%{?buildroot:%{buildroot}} \\\
+	INSTALL_ROOT=%{?buildroot:%{buildroot}} \\\
+	V=1 VERBOSE=1 CFLAGS="${CFLAGS}" ASMFLAGS="${ASMFLAGS}" CXXFLAGS="${CXXFLAGS}" FFLAGS="${FFLAGS}" FCFLAGS="${FCFLAGS}" LDFLAGS="${LDFLAGS}" LIBS="$LIBS" \\\
+  install %*
+
+%make_install_common() \
+  rm -f %{?buildroot:%{buildroot}}/usr/share/info/dir \
+  rm -rf %{?buildroot:%{buildroot}}/usr/lib64/haswell/pkgconfig \
+  rm -rf %{?buildroot:%{buildroot}}/usr/lib64/haswell/avx512_1/pkgconfig \
+  rm -rf %{?buildroot:%{buildroot}}/usr/local \
+  rm -f %{?buildroot:%{buildroot}}/usr/lib/perl5/*/*/perllocal.pod \
+  [ -d %{?buildroot:%{buildroot}}/etc/dbus-1 ] && mkdir -p %{?buildroot:%{buildroot}}/usr/share/dbus-1  || : \
+  [ -d %{?buildroot:%{buildroot}}/etc/dbus-1 ] && mv %{?buildroot:%{buildroot}}/etc/dbus-1/* %{?buildroot:%{buildroot}}/usr/share/dbus-1/  || : \
+  [ -d %{?buildroot:%{buildroot}}/sbin ] && mkdir %{?buildroot:%{buildroot}}/usr/bin/  || : \
+  [ -d %{?buildroot:%{buildroot}}/bin ] && mkdir %{?buildroot:%{buildroot}}/usr/bin/  || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/sbin ] && mkdir %{?buildroot:%{buildroot}}/usr/bin/  || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/sbin ] && mv %{?buildroot:%{buildroot}}/usr/sbin/* %{?buildroot:%{buildroot}}/usr/bin/  || : \
+  [ -d %{?buildroot:%{buildroot}}/bin ] && mv %{?buildroot:%{buildroot}}/bin/* %{?buildroot:%{buildroot}}/usr/bin/  || : \
+  [ -d %{?buildroot:%{buildroot}}/sbin ] && mv %{?buildroot:%{buildroot}}/sbin/* %{?buildroot:%{buildroot}}/usr/bin/  || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/share/pkgconfig ] && mkdir -p %{?buildroot:%{buildroot}}/usr/lib64/pkgconfig || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/lib/pkgconfig ] && mkdir -p %{?buildroot:%{buildroot}}/usr/lib64/pkgconfig || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/share/pkgconfig ] && mv %{?buildroot:%{buildroot}}/usr/share/pkgconfig/*   %{?buildroot:%{buildroot}}/usr/lib64/pkgconfig   || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/lib/pkgconfig ] && mv %{?buildroot:%{buildroot}}/usr/lib/pkgconfig/*   %{?buildroot:%{buildroot}}/usr/lib64/pkgconfig   || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/share/doc/%{name}-%{version} ] && mv %{?buildroot:%{buildroot}}/usr/share/doc/%{name}-%{version} %{?buildroot:%{buildroot}}/usr/share/doc/%{name} || : \
+  [ -d %{?buildroot:%{buildroot}}/usr/sbin ] && rmdir %{?buildroot:%{buildroot}}/usr/sbin || : \
+  [ -d %{?buildroot:%{buildroot}}/sbin ] && rmdir %{?buildroot:%{buildroot}}/sbin || : \
+  [ -d %{?buildroot:%{buildroot}}/bin ] && rmdir %{?buildroot:%{buildroot}}/bin || : \
+  chmod a+x %{?buildroot:%{buildroot}}{/usr,}/lib{,32,64}/*.so* || : \
+  %{!?keepstatic:find %{?buildroot:%{buildroot}} -regex ".*\\.a$" | xargs rm -f --}

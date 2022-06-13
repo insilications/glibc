@@ -36,7 +36,7 @@ done
 # passes the `--no-hard-links` option to `localedef`.
 hardlink %{buildroot}/usr/share/locale
 
-# ../glibc-buildroot
+# ../glibc-build
 popd
 
 ln -sfv /var/cache/locale/locale-archive %{buildroot}/usr/share/locale/locale-archive
