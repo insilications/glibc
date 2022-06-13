@@ -3,11 +3,11 @@
 # desirable. One name per line, no whitespace.
 #
 bison
+gcc
+gcc-dev
 gcc-dev32
-gcc-lib32
 gcc-libgcc32
 gcc-libstdc++32
-gcc-staticdev32
 gettext
 gettext-dev
 grep
