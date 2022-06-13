@@ -19,4 +19,4 @@ export PKG_CONFIG_PATH="/usr/lib32/pkgconfig:/usr/lib64/pkgconfig:/usr/share/pkg
 unset CPATH
 unset LIBRARY_PATH
 #!
-export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
+# export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"

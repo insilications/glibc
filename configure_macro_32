@@ -1,6 +1,3 @@
-%define glibc_target x86_64-generic-linux
-%define abi_package %{nil}
-
 if [ ! -d "glibc-build32" ]; then
     mkdir glibc-build32;
 fi
@@ -48,4 +45,3 @@ pushd glibc-build32/
     libc_cv_complocaledir=/usr/share/locale \
     libc_cv_can_use_register_asm_ebp=no \
     CC="gcc -m32" CXX="g++ -m32" i686-linux-gnu
-
