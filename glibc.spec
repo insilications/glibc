@@ -5,16 +5,17 @@
 %define keepstatic 1
 Name     : glibc
 Version  : 2.35
-Release  : 1523
+Release  : 1524
 URL      : file:///insilications/apps/glibc-2.35.tar.gz
 Source0  : file:///insilications/apps/glibc-2.35.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0
+License  : GPL-2.0 LGPL-2.1
 Requires: clr-systemd-config-data
 Requires: filesystem
 Requires: nss-altfiles-lib
 BuildRequires : bison
+BuildRequires : buildreq-configure
 BuildRequires : gcc
 BuildRequires : gcc-dev
 BuildRequires : gcc-dev32
@@ -62,7 +63,8 @@ Patch23: nsswitch.patch
 Patch24: 0001-modify-no-pie-ccflag.patch
 
 %description
-No detailed description available
+This directory contains the sources of the GNU C Library.
+See the file "version.h" for what release version you have.
 
 %prep
 %setup -q -n glibc-2.35
@@ -104,7 +106,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655503299
+export SOURCE_DATE_EPOCH=1655504434
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
@@ -177,7 +179,7 @@ pushd glibc-build/
     libc_cv_complocaledir=/usr/share/locale
 ## make_macro content
 make -O -j16 V=1
-make USE_CLOCK_GETTIME=1 bench-build -j16
+# make USE_CLOCK_GETTIME=1 bench-build -j16
 popd
 ## make_macro end
 
@@ -349,7 +351,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655503299
+export SOURCE_DATE_EPOCH=1655504434
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
