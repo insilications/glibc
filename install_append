@@ -12,7 +12,7 @@ rm -fv %{buildroot}/usr/lib64/gconv/gconv-modules.cache
 #iconvconfig --prefix=%{buildroot}
 
 
-make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot} -j14
+make -s -O localedata/install-locales  DESTDIR=%{buildroot} INSTALL_ROOT=%{buildroot} -j14
 
 # Make ldconfig not fail
 install -d %{buildroot}/var/cache/ldconfig
@@ -27,7 +27,7 @@ find ../lib64/glibc/benchmarks -type f -exec ln -s {} . \;
 popd
 
 ## Generate UTF-8 locale-related data
-make -s -O -j14 localedata/install-locale-files DESTDIR=%{buildroot} install_root=%{buildroot}
+make -s -O -j14 localedata/install-locale-files DESTDIR=%{buildroot} INSTALL_ROOT=%{buildroot}
 for origpath in %{buildroot}/usr/share/locale/*.utf8*; do
   rename -v .utf8 .UTF-8 "$origpath"
 done

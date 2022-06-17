@@ -1,3 +1,8 @@
+# Keep only the UTF-8 locales...
+supported=./localedata/SUPPORTED
+sed -nr '/^(#|SUPPORTED-LOCALES=|.*\/UTF-8)/p' $supported > $supported.new
+mv -v $supported.new $supported
+
 if [ ! -d "glibc-build32" ]; then
     mkdir glibc-build32;
 fi

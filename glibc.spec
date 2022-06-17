@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : glibc
 Version  : 2.35
-Release  : 1518
+Release  : 1520
 URL      : file:///insilications/apps/glibc-2.35.tar.gz
 Source0  : file:///insilications/apps/glibc-2.35.tar.gz
 Summary  : No detailed summary available
@@ -104,16 +104,16 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655195548
+export SOURCE_DATE_EPOCH=1655461409
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
-export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export ASMFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export CXXFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export FCFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export FFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export LDFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export ASMFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export CXXFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export FCFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export FFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export LDFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
 export AR=/usr/bin/gcc-ar
 export RANLIB=/usr/bin/gcc-ranlib
 export NM=/usr/bin/gcc-nm
@@ -133,80 +133,7 @@ if [ ! -d "glibc-build" ]; then
     mkdir glibc-build;
 fi
 
-
 pushd glibc-build/
-../configure \
-    --prefix=/usr \
-    --exec_prefix=/usr \
-    --bindir=/usr/bin \
-    --sbindir=/usr/bin \
-    --libexecdir=/usr/lib64/glibc \
-    --datadir=/usr/share \
-    --sysconfdir=%{_sysconfdir} \
-    --sharedstatedir=%{_localstatedir}/lib \
-    --localstatedir=%{_localstatedir} \
-    --libdir=/usr/lib64 \
-    --localedir=/usr/share/locale \
-    --infodir=/usr/share/info \
-    --mandir=/usr/share/man \
-    --disable-silent-rules \
-    --disable-dependency-tracking \
-    --enable-kernel=3.10 \
-    --without-cvs \
-    --disable-profile \
-    --disable-debug \
-    --without-gd \
-    --enable-clocale=gnu \
-    --enable-add-ons \
-    --without-selinux \
-    --enable-obsolete-rpc \
-    --with-pkgversion='Clear Linux Software for Intel Architecture' \
-    --enable-lock-elision=yes \
-    --enable-bind-now \
-    --enable-tunables \
-    --enable-stack-protector=no \
-    --disable-stack-protector \
-    --enable-obsolete-nsl \
-    --disable-cet \
-    --disable-static-pie \
-    --disable-default-pie \
-    --disable-werror \
-    --enable-mathvec \
-    --disable-multi-arch \
-    --with-nonshared-cflags="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000" \
-    libc_cv_slibdir=/usr/lib64 \
-    libc_cv_complocaledir=/usr/share/locale
-## make_macro content
-make -O -j16 V=1
-make USE_CLOCK_GETTIME=1 bench-build -j16
-popd
-## make_macro end
-
-pushd ../build-special/
-## altflags1_special content
-## altflags1
-export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
-export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export ASMFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export CXXFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export FCFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export FFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export LDFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export AR=/usr/bin/gcc-ar
-export RANLIB=/usr/bin/gcc-ranlib
-export NM=/usr/bin/gcc-nm
-%global _lto_cflags %{nil}
-%global _disable_maintainer_mode 1
-export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
-# export CPATH=/usr/include
-# export LIBRARY_PATH=%{_libdir}
-# export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
-## altflags1_special end
-if [ ! -d "glibc-build-shared" ]; then
-    mkdir glibc-build-shared;
-fi
-
-pushd glibc-build-shared/
 ../configure \
     --prefix=/usr \
     --exec_prefix=/usr \
@@ -248,6 +175,83 @@ pushd glibc-build-shared/
     --with-nonshared-cflags="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
+## make_macro content
+make -O -j16 V=1
+make USE_CLOCK_GETTIME=1 bench-build -j16
+popd
+## make_macro end
+
+pushd ../build-special/
+## altflags1_special content
+## altflags1_special
+export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
+export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export ASMFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export CXXFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export FCFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export FFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export LDFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export AR=/usr/bin/gcc-ar
+export RANLIB=/usr/bin/gcc-ranlib
+export NM=/usr/bin/gcc-nm
+%global _lto_cflags %{nil}
+%global _disable_maintainer_mode 1
+export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
+# export CPATH=/usr/include
+# export LIBRARY_PATH=%{_libdir}
+# export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
+## altflags1_special end
+# Keep only the UTF-8 locales...
+supported=./localedata/SUPPORTED
+sed -nr '/^(#|SUPPORTED-LOCALES=|.*\/UTF-8)/p' $supported > $supported.new
+mv -v $supported.new $supported
+
+if [ ! -d "glibc-build-static" ]; then
+    mkdir glibc-build-static;
+fi
+
+pushd glibc-build-static/
+../configure \
+    --prefix=/usr \
+    --exec_prefix=/usr \
+    --bindir=/usr/bin \
+    --sbindir=/usr/bin \
+    --libexecdir=/usr/lib64/glibc \
+    --datadir=/usr/share \
+    --sysconfdir=%{_sysconfdir} \
+    --sharedstatedir=%{_localstatedir}/lib \
+    --localstatedir=%{_localstatedir} \
+    --libdir=/usr/lib64 \
+    --localedir=/usr/share/locale \
+    --infodir=/usr/share/info \
+    --mandir=/usr/share/man \
+    --disable-silent-rules \
+    --disable-dependency-tracking \
+    --enable-kernel=3.10 \
+    --without-cvs \
+    --disable-profile \
+    --disable-debug \
+    --without-gd \
+    --enable-clocale=gnu \
+    --enable-add-ons \
+    --without-selinux \
+    --enable-obsolete-rpc \
+    --with-pkgversion='Clear Linux Software for Intel Architecture' \
+    --enable-lock-elision=yes \
+    --enable-bind-now \
+    --enable-tunables \
+    --enable-stack-protector=no \
+    --disable-stack-protector \
+    --enable-obsolete-nsl \
+    --disable-cet \
+    --disable-static-pie \
+    --disable-default-pie \
+    --disable-werror \
+    --enable-mathvec \
+    --disable-multi-arch \
+    --with-nonshared-cflags="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000" \
+    libc_cv_slibdir=/usr/lib64 \
+    libc_cv_complocaledir=/usr/share/locale
 ## make_macro_special content
 make -O -j16 V=1
 
@@ -285,6 +289,11 @@ unset CPATH
 unset LIBRARY_PATH
 # export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
 ## altflags1_32 end
+# Keep only the UTF-8 locales...
+supported=./localedata/SUPPORTED
+sed -nr '/^(#|SUPPORTED-LOCALES=|.*\/UTF-8)/p' $supported > $supported.new
+mv -v $supported.new $supported
+
 if [ ! -d "glibc-build32" ]; then
     mkdir glibc-build32;
 fi
@@ -340,7 +349,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655195548
+export SOURCE_DATE_EPOCH=1655461409
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -392,6 +401,34 @@ popd
 popd
 ## install_macro_32 end
 ## altflags1_special content
+## altflags1_special
+export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
+export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export ASMFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export CXXFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export FCFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export FFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export LDFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
+export AR=/usr/bin/gcc-ar
+export RANLIB=/usr/bin/gcc-ranlib
+export NM=/usr/bin/gcc-nm
+%global _lto_cflags %{nil}
+%global _disable_maintainer_mode 1
+export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
+# export CPATH=/usr/include
+# export LIBRARY_PATH=%{_libdir}
+# export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
+## altflags1_special end
+## install_macro_build_special start
+# install_macro_build_special
+pushd ../build-special/
+pushd glibc-build-static/
+make install DESTDIR=%{buildroot}/static INSTALL_ROOT=%{buildroot}/static -j16
+chmod a+x %{buildroot}/static{/usr,}/lib{,32,64}/*.so* || :
+popd
+popd
+## install_macro_build_special end
+## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
 export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
@@ -409,46 +446,31 @@ export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
 # export CPATH=/usr/include
 # export LIBRARY_PATH=%{_libdir}
 # export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
-## altflags1_special end
-## install_macro_build_special start
-# install_macro_build_special
-pushd ../build-special/
-pushd glibc-build-shared/
-%make_install_special
+## altflags1f end
+## install_macro start
+pushd glibc-build/
+%make_install
 mkdir -p %{buildroot}/usr/lib64/haswell
 cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
 cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
 cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
 cp libc.so  %{buildroot}/usr/lib64/haswell/libc.so.6
 popd
-popd
-## install_macro_build_special end
-## altflags1f content
-## altflags1
-export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
-export CFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export ASMFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export CXXFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -fvisibility-inlines-hidden -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wno-inline -Wall -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export FCFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export FFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export LDFLAGS="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -fno-plt -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -gdescribe-dies -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000"
-export AR=/usr/bin/gcc-ar
-export RANLIB=/usr/bin/gcc-ranlib
-export NM=/usr/bin/gcc-nm
-%global _lto_cflags %{nil}
-%global _disable_maintainer_mode 1
-export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
-# export CPATH=/usr/include
-# export LIBRARY_PATH=%{_libdir}
-# export PATH="/usr/bin/haswell:/usr/bin:/usr/sbin"
-## altflags1f end
-## install_macro start
-pushd glibc-build/
-make install DESTDIR=%{buildroot}/static INSTALL_ROOT=%{buildroot}/static -j16
-chmod a+x %{buildroot}/static{/usr,}/lib{,32,64}/*.so* || :
-popd
-pushd ../build-special/
-pushd glibc-build-shared/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libBrokenLocale.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libm-2.35.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libm.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libdl.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libpthread.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/librt.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libmcheck.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libg.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libc.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libmvec.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libcrypt.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libanl.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libresolv.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libutil.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
+rm -rf /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/
 ## install_macro end
 ## install_append content
 mkdir -p %{buildroot}/var/cache/locale
@@ -465,7 +487,7 @@ rm -fv %{buildroot}/usr/lib64/gconv/gconv-modules.cache
 #iconvconfig --prefix=%{buildroot}
 
 
-make -s -O localedata/install-locales  DESTDIR=%{buildroot} install_root=%{buildroot} -j14
+make -s -O localedata/install-locales  DESTDIR=/builddir/build/BUILDROOT/glibc-2.35-1520.x86_64 INSTALL_ROOT=/builddir/build/BUILDROOT/glibc-2.35-1520.x86_64 -j14
 
 # Make ldconfig not fail
 install -d %{buildroot}/var/cache/ldconfig
