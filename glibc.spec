@@ -104,7 +104,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655135269
+export SOURCE_DATE_EPOCH=1655195548
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
@@ -340,7 +340,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655135269
+export SOURCE_DATE_EPOCH=1655195548
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -444,12 +444,11 @@ export PKG_CONFIG_PATH="/usr/lib64/pkgconfig:/usr/share/pkgconfig"
 ## altflags1f end
 ## install_macro start
 pushd glibc-build/
-%make_install
-mkdir -p %{buildroot}/usr/lib64/haswell
-cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
-cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
-cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
-cp libc.so  %{buildroot}/usr/lib64/haswell/libc.so.6
+make install DESTDIR=%{buildroot}/static INSTALL_ROOT=%{buildroot}/static -j16
+chmod a+x %{buildroot}/static{/usr,}/lib{,32,64}/*.so* || :
+popd
+pushd ../build-special/
+pushd glibc-build-shared/
 ## install_macro end
 ## install_append content
 mkdir -p %{buildroot}/var/cache/locale
