@@ -10,12 +10,11 @@ URL      : file:///insilications/apps/glibc-2.35.tar.gz
 Source0  : file:///insilications/apps/glibc-2.35.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
-License  : GPL-2.0 LGPL-2.1
+License  : GPL-2.0
 Requires: clr-systemd-config-data
 Requires: filesystem
 Requires: nss-altfiles-lib
 BuildRequires : bison
-BuildRequires : buildreq-configure
 BuildRequires : gcc
 BuildRequires : gcc-dev
 BuildRequires : gcc-dev32
@@ -63,8 +62,7 @@ Patch23: nsswitch.patch
 Patch24: 0001-modify-no-pie-ccflag.patch
 
 %description
-This directory contains the sources of the GNU C Library.
-See the file "version.h" for what release version you have.
+No detailed description available
 
 %prep
 %setup -q -n glibc-2.35
@@ -106,7 +104,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655474487
+export SOURCE_DATE_EPOCH=1655480797
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
@@ -351,7 +349,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655474487
+export SOURCE_DATE_EPOCH=1655480797
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
@@ -457,21 +455,21 @@ cp math/libm.so %{buildroot}/usr/lib64/haswell/libm.so.6
 cp mathvec/libmvec.so %{buildroot}/usr/lib64/haswell/libmvec.so.1
 cp crypt/libcrypt.so %{buildroot}/usr/lib64/haswell/libcrypt.so.1
 cp libc.so  %{buildroot}/usr/lib64/haswell/libc.so.6
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libBrokenLocale.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libm-2.35.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libm.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libdl.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libpthread.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/librt.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libmcheck.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libg.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libc.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libmvec.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libcrypt.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libanl.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libresolv.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-cp -a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/usr/lib64/libutil.a /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/usr/lib64/
-rm -rf /builddir/build/BUILDROOT/glibc-2.35-1520.x86_64/static/
+cp -a {buildroot}/static/usr/lib64/libBrokenLocale.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libm-2.35.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libm.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libdl.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libpthread.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/librt.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libmcheck.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libg.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libc.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libmvec.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libcrypt.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libanl.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libresolv.a {buildroot}/usr/lib64/
+cp -a {buildroot}/static/usr/lib64/libutil.a {buildroot}/usr/lib64/
+rm -rf {buildroot}/static/
 ## install_macro end
 ## install_append content
 mkdir -p %{buildroot}/var/cache/locale
