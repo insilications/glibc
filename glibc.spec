@@ -5,7 +5,7 @@
 %define keepstatic 1
 Name     : glibc
 Version  : 2.35
-Release  : 1522
+Release  : 1523
 URL      : file:///insilications/apps/glibc-2.35.tar.gz
 Source0  : file:///insilications/apps/glibc-2.35.tar.gz
 Summary  : No detailed summary available
@@ -106,7 +106,7 @@ unset https_proxy
 unset no_proxy
 export SSL_CERT_FILE=/var/cache/ca-certs/anchors/ca-certificates.crt
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1655474017
+export SOURCE_DATE_EPOCH=1655474487
 ## altflags1f content
 ## altflags1
 export ASFLAGS="-D__AVX__=1 -D__AVX2__=1 -msse2avx -D__FMA__=1 -DNDEBUG=1"
@@ -351,7 +351,7 @@ popd
 popd
 
 %install
-export SOURCE_DATE_EPOCH=1655474017
+export SOURCE_DATE_EPOCH=1655474487
 rm -rf %{buildroot}
 ## altflags1_32 content
 unset CFLAGS
