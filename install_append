@@ -68,3 +68,16 @@ ln -s ld-2.35.so  %{buildroot}/usr/lib64/ld-linux-x86-64.so.2
 rm -rf %{buildroot}/var || :
 rm -rf %{buildroot}/etc || :
 rm %{buildroot}/usr/share/locale/locale-archive
+
+install -dm 0755 %{buildroot}/usr/lib64/haswell/
+pushd %{buildroot}/usr/lib64/haswell/
+for lib in ../lib*.so*; do
+    ln -sf $lib %{buildroot}/usr/lib64/haswell/;
+done
+popd
+if [[ -d "%{buildroot}/usr/lib64/haswell" ]]; then
+    if [[ ! "$(ls -A %{buildroot}/usr/lib64/haswell/)" ]]; then
+        rm -rf %{buildroot}/usr/lib64/haswell/
+    fi
+fi
+
