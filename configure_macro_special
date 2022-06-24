@@ -24,7 +24,7 @@ pushd glibc-build-static/
     --mandir=/usr/share/man \
     --disable-silent-rules \
     --disable-dependency-tracking \
-    --enable-kernel=3.10 \
+    --enable-kernel=4.18 \
     --without-cvs \
     --disable-profile \
     --disable-debug \
@@ -34,7 +34,7 @@ pushd glibc-build-static/
     --without-selinux \
     --enable-obsolete-rpc \
     --with-pkgversion='Clear Linux Software for Intel Architecture' \
-    --enable-lock-elision=yes \
+    --enable-lock-elision=no \
     --enable-bind-now \
     --enable-tunables \
     --enable-stack-protector=no \
@@ -46,6 +46,6 @@ pushd glibc-build-static/
     --disable-werror \
     --enable-mathvec \
     --enable-multi-arch \
-    --with-nonshared-cflags="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-semantic-interposition -mno-direct-extern-access -fno-pic -fno-PIC -Wl,-Bsymbolic-functions -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000" \
+    --with-nonshared-cflags="-Wa,-mrelax-relocations=yes -DNDEBUG=1 -m64 -D__AVX2__=1 -D__AVX__=1 -D__FMA__=1 -O3 -fno-pic -fno-PIC -falign-functions=32 -ffat-lto-objects -flive-range-shrinkage -fno-lto -fno-reorder-blocks-and-partition -fno-stack-protector -fuse-ld=bfd -fuse-linker-plugin -g3 -grecord-gcc-switches -malign-data=cacheline -march=native -mavx -mavx2 -mno-vzeroupper -mprefer-vector-width=256 -mrelax-cmpxchg-loop -msse2avx -mtune=native -pipe -Wall -Wno-inline -Wl,--build-id=sha1 -Wl,--emit-relocs -Wl,-O2 -Wl,-z,max-page-size=0x1000" \
     libc_cv_slibdir=/usr/lib64 \
     libc_cv_complocaledir=/usr/share/locale
