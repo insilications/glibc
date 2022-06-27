@@ -21,4 +21,4 @@ utf8-locale-naming.patch
 noclone3yet.patch
 seccomp_workaround.patch
 nsswitch.patch
-# 0001-modify-no-pie-ccflag.patch
+0001-modify-no-pie-ccflag.patch
